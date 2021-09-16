@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+	<title>Document</title>
+</head>
+<script>
+	const Debounce = (func,delay) => {
+	  let timeOut;
+	  return () => {
+	    clearTimeout(timeOut);//清空setTimeout
+	    timeOut = setTimeout(() => { func.apply(this); }, delay);//設定this
+	  }
+	}
+	const beenClick = () => {
+	  console.log("click!!!!!"); 
+	}
+	const debounceClick = Debounce( () => beenClick(),300);
+</script>
+<body>
+	<button class= "btn btn-primary" onclick="debounceClick()">Debounce</button>
+</body>
+</html>
